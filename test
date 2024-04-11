@@ -1,0 +1,39 @@
+#! /bin/bash
+
+
+# for name in $*; do
+#   echo $name
+# done
+
+# for num in $(seq 10); do
+#   echo "$num"  
+# done
+
+# for variable in */; do
+  
+# done
+
+# for variable in ; do
+#   echo "$variable"
+# done
+
+# IFS=":"
+# names="dk:bob:alice:joe"
+
+# for name in $names; do
+#   echo "hello $name"
+# done
+
+# var=-1
+# ls ./ && echo "var is lager than one"
+# [ 10 -eq 11 ]
+
+
+# if [ $# -ne 1 ] ; then
+#   echo "Usage: $0 command" >&2
+#   exit 1
+# fi
+
+# esac
+
+echo "this is: $#"

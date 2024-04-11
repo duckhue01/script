@@ -1,0 +1,42 @@
+#! /bin/bash
+
+# normdate--Normalizes month field in date specification to three letters,
+#   first letter capitalized. A helper function for Script #7, valid-date.
+#   Exits with 0 if no error.
+#   format: month day year
+# Assume that user input should type wrong format mat not value
+
+month=$1
+
+month_num_to_name() {
+  case $1 in 
+    1 ) month="Jan"    ;;  2 ) month="Feb"    ;;
+    3 ) month="Mar"    ;;  4 ) month="Apr"    ;;
+    5 ) month="May"    ;;  6 ) month="Jun"    ;;
+    7 ) month="Jul"    ;;  8 ) month="Aug"    ;;
+    9 ) month="Sep"    ;;  10) month="Oct"    ;;
+    11) month="Nov"    ;;  12) month="Dec"    ;;
+    * ) echo "$0: Unknown moht value $1" >&2; exit 1
+  esac
+  return 0
+}
+
+if [[ $# -ne 3 ]]; then
+  echo "Input format must be: month day year" >&2; exit 1
+fi
+
+
+# check wheter input is number then convert to correct format
+
+if [[ -z  $(echo $1 | sed 's/[[:digit:]]//g') ]]; then
+  month_num_to_name $1
+else
+
+# Normalize to first 3 letters, first upper- and then lowercase.
+f_char="$(echo $month | cut -c1 | tr '[:lower:]' '[:upper:]')"
+month=$f_char$(echo $month | cut -c2-3 | tr '[:lower:]' '[:upper:]')
+
+fi
+
+echo $month $2 $3
+exit 0

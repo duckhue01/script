@@ -1,0 +1,18 @@
+#! /bin/bash
+
+# nicenumber--Given a number, shows it in comma-separated form. Expects DD (decimal point delimiter) and TD (thousands delimiter) to be instantiated. Instantiates nicenum or, if a second arg is specified, the output is echoed to stdout.
+
+# 156912830.123
+
+nice_number() {
+  int=$(echo $1 | cut -d. -f1)
+  dec=$(echo $1 | cut -d. -f2)
+
+  echo $int:$dec
+
+  while [[ $int -gt 999 ]]; do
+    
+  done
+}
+
+nice_number $*

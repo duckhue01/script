@@ -1,0 +1,21 @@
+#!/bin/bash
+# validAlphaNum -- Ensures that input consists only of alphabetical and numeric characters
+
+
+valid_alpha_num() {
+  validchars="$(echo $1 |  sed 's/[^- [:digit:]\(\)]//g' )"
+
+  if [[ $validchars = $1 ]]; then
+    return 0
+  fi
+
+  return 1
+}
+
+if ! valid_alpha_num $1 ; then
+  echo "invalid $1"
+  exit 1
+fi
+
+echo "valid $1"
+exit 0
