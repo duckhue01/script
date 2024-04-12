@@ -10,7 +10,7 @@ nice_number() {
 
   echo $int:$dec
 
-  while [[ $int -gt 999 ]]; do
+  while [[ $int -gt 999 ]]; 
     
   done
 }

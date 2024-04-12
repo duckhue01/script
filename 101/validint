@@ -1,0 +1,43 @@
+#! /bin/bash
+# validint--Validates integer input, allowing negative integers too
+# validate contrains 
+
+valid_int() {
+  number=$1; min=$2; max=$3
+  
+  # Test the number is in correct format
+
+  # Is the first char a '-' sign
+  if [[ "${number:0:1}" = "-" ]]; then
+    test_value=${number:1}
+  else 
+    test_value=${number}
+  fi
+
+  no_digits=$(echo $test_value | sed 's/[[:digit:]]//g')
+
+  if [[ ! -z $no_digits ]]; then echo "invalid format" >&2; exit 1; fi
+
+
+  if [[ ! -z $min ]]; then
+    if [[ $number -lt $min ]]; then
+      echo "less than min value" >&2; exit 1; 
+    fi
+  fi
+
+  if [[ ! -z $max ]]; then
+    if [[ $number -gt $max ]]; then
+      echo "greater than max value" >&2; exit 1; 
+    fi
+  fi
+
+  echo "value is valid"
+  return 0
+}
+
+
+if [[ -z $1 ]]; then
+  echo "you need to input a number"; exit 1
+fi
+
+valid_int $1 $2 $3
